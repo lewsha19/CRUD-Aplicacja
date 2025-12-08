@@ -4,9 +4,45 @@
 <meta charset="utf-8">
 <title>Entities</title>
 <style>
-  table { border-collapse: collapse; }
-  th, td { border: 1px solid #333; padding: 4px; }
-  label { margin-right: 8px; }
+   body {
+    font-family: Arial, sans-serif;
+  }
+
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  th, td {
+    border: 1px solid #ccc;
+    padding: 6px 8px;
+    text-align: left;
+  }
+
+  th {
+    background-color: #f0f0f0;
+  }
+
+  tbody tr:nth-child(even) {
+    background-color: #fafafa;
+  }
+
+  tbody tr:hover {
+    background-color: #eef6ff;
+  }
+
+  input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 4px;
+  }
+
+  button {
+    padding: 4px 8px;
+    margin-right: 4px;
+    cursor: pointer;
+  }
 </style>
 </head>
 <body>
