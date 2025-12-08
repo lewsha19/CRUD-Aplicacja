@@ -1,10 +1,12 @@
 <?php
 
-require __DIR__ . '/../vendor/autoload.php';
+$ds = DIRECTORY_SEPARATOR;
 
-use Flight;
+// Подключаем автозагрузку Composer
+require __DIR__ . $ds . '..' . $ds . 'vendor' . $ds . 'autoload.php';
 
-// подключаем роуты
-require __DIR__ . '/../app/routes.php';
+// Подключение bootstrap с правильным путём
+require __DIR__ . $ds . '..' . $ds . 'app' . $ds . 'config' . $ds . 'bootstrap.php';
 
+// Запускаем приложение
 Flight::start();

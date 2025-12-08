@@ -3,29 +3,37 @@
 use app\controllers\ApiExampleController;
 use app\controllers\ItemsController;
 use app\middlewares\SecurityHeadersMiddleware;
-use flight\Engine;
 use flight\net\Router;
-@@ -10,9 +11,7 @@
- * @var Engine $app
- */
-$router->group('', function(Router $router) use ($app) {
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
+/** @var Router $router */
 
-$router->get('/', function() use ($app) {
-		$app->render('welcome', [ 'message' => 'You are gonna do great things!' ]);
-	});
-@@ -21,10 +20,16 @@
-		echo '<h1>Hello world! Oh hey '.$name.'!</h1>';
-	});
-	$router->get('/users', [ ApiExampleController::class, 'getUsers' ]);
-	$router->get('/users/@id:[0-9]+', [ ApiExampleController::class, 'getUser' ]);
-	$router->post('/users/@id:[0-9]+', [ ApiExampleController::class, 'updateUser' ]);
+$router->group('', function (Router $router) {
 
-	$router->get('/entities', [ ItemsController::class, 'index' ]);
-	$router->get('/entities/@id:[0-9]+', [ ItemsController::class, 'show' ]);
-	$router->post('/entities', [ ItemsController::class, 'create' ]);
-	$router->put('/entities/@id:[0-9]+', [ ItemsController::class, 'update' ]);
-	$router->delete('/entities/@id:[0-9]+', [ ItemsController::class, 'delete' ]);
+    $router->get('/', function () {
+        Flight::render('welcome', [
+            'message' => 'You are gonna do great things!'
+        ]);
+    });
 
-	$router->get('/items', [ ItemsController::class, 'page' ]);
+    $router->get('/hello-world/@name', function ($name) {
+        echo '<h1>Hello world! Oh hey ' . $name . '!</h1>';
+    });
 
-}, [ SecurityHeadersMiddleware::class ]);
+    // users
+    $router->get('/users', [ApiExampleController::class, 'getUsers']);
+    $router->get('/users/@id:[0-9]+', [ApiExampleController::class, 'getUser']);
+    $router->post('/users/@id:[0-9]+', [ApiExampleController::class, 'updateUser']);
+
+    // entities
+    $router->get('/entities', [ItemsController::class, 'index']);
+    $router->get('/entities/@id:[0-9]+', [ItemsController::class, 'show']);
+    $router->post('/entities', [ItemsController::class, 'create']);
+    $router->put('/entities/@id:[0-9]+', [ItemsController::class, 'update']);
+    $router->delete('/entities/@id:[0-9]+', [ItemsController::class, 'delete']);
+
+    $router->get('/items', [ItemsController::class, 'page']);
+
+}, [SecurityHeadersMiddleware::class]);
+
+
