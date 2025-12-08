@@ -3,7 +3,7 @@
 // Usage: php tools/smoke.php [base_url]
 // Example: php tools/smoke.php http://localhost:8080
 
-$base = $argv[1] ?? 'http://localhost:8080';
+$base = $argv[1] ?? 'http://localhost:8000';
 $api = rtrim($base, '/') . '/entities';
 
 function req(string $method, string $url, $body = null, array $headers = []): array {
