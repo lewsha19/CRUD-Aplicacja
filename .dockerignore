@@ -1,0 +1,40 @@
+# Git
+.git
+.gitignore
+
+# IDE
+.idea
+.vscode
+*.swp
+*.swo
+
+# Logs
+app/log/*.log
+app/log/*.html
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Vagrant
+.vagrant
+Vagrantfile
+
+# Documentation
+*.md
+!README.md
+
+# Database (буде створена в контейнері)
+app/database.sqlite
+
+# Vendor (буде встановлено в контейнері)
+vendor/
+
+# Composer cache
+.composer
+composer.lock
+
+# Node (якщо використовується)
+node_modules/
+package-lock.json
+
